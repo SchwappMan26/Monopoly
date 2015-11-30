@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 public class Board
 	{
+		static ArrayList <Spaces>SpacesLoad=new ArrayList<Spaces>();
 		public static void BoardLoad()
 			{
 				Spaces c=new Corners("GO",1);
@@ -44,7 +45,7 @@ public class Board
 				Spaces t1=new Taxes("Luxury Tax",39);
 				Spaces b1=new Blue("Boardwalk",40); 
 				
-				ArrayList <Spaces>SpacesLoad=new ArrayList<Spaces>();
+				
 				SpacesLoad.add(br1);
 				SpacesLoad.add(lb11);
 				SpacesLoad.add(p11);
