@@ -5,28 +5,28 @@ public class Play
 		public static boolean gameContinues=true;
 		public static void DicePlay()
 			{
-				int rollDice;
-				int Dice1;
-				int Dice2;
-				int Position=1;
-				Dice1=((int)(Math.random()*6)+1);
-				Dice2=((int)(Math.random()*6)+1);
-				rollDice=Dice1+Dice2;
-				if (Dice1==Dice2)
+				int dice1;
+				int dice2;
+				int roll;
+				int position = 1;
+				while(gameContinues=true) 
 					{
-						System.out.println("Doubles!");
-					}
-				while(gameContinues)
-					{
-						System.out.println("\nRolling Dice");
-						Object player;
-						if(Player.hasNextLine())
+						System.out.println("\nHit Enter to Roll Dice");
+						if(Player.hasNextLine()) 
 							{
 								Player.nextLine();
-								Position=(Position+rollDice)%40;
-								System.out.println("You Rolled "+rollDice+"\tYou Landed on "+Board.SpacesLoad.get(Position).getName());
-								
+								dice1 = (int)(Math.random()*6 + 1);
+								dice2 = (int)(Math.random()*6 + 1);
+								roll = dice1 + dice2;
+								position = (position + roll)%40;
+								System.out.println("You rolled " + roll + "\tYou landed on " + Board.SpacesLoad.get(position).getName());
+									
 							}
+						
 					}
+			}
+		public static void player()
+			{
+				
 			}
 	}
