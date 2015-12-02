@@ -1,9 +1,14 @@
 
 public class Corners extends Other
 	{
-		public Corners(String n, int s)
+		public Corners(String n, int s, boolean cb) 
 			{
-				name=n;
-				space=s;
+				name = n;
+				space = s;
+				canBuy = cb;
+			}
+		public String getName()
+			{
+				return name;
 			}
 	}

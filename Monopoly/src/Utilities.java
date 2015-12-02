@@ -1,13 +1,12 @@
 
 public class Utilities extends Properties
 	{
-		public Utilities(String n, int s, int p, boolean pu)
+		public Utilities(String n, int s, int p, boolean pu, boolean cb)
 			{
 				name=n;
 				space=s;
 				price=p;
 				purchased=pu;
-				buyable=true;
-				isBought=false;
+				canBuy = cb;
 			}
 	}

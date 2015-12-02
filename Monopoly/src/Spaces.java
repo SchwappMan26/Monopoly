@@ -1,41 +1,58 @@
 
 public abstract class Spaces
 	{
-		protected static  String name;
-		protected static int space;
-		protected boolean buyable;
-		protected boolean isBought=false;
-	
-		public String getName()
-			{
-				return name;
-			}
-		public void setName(String name)
-			{
-				this.name = name;
-			}
-		public int getSpace()
-			{
-				return space;
-			}
-		public void setSpace(int space)
-			{
-				this.space = space;
-			}
-		public boolean isBuyable()
-			{
-				return buyable;
-			}
-		public void setBuyable(boolean buyable)
-			{
-				this.buyable = buyable;
-			}
-		public boolean isBought()
-			{
-				return isBought;
-			}
-		public void setBought(boolean isBought)
-			{
-				this.isBought = isBought;
-			}
+				protected String name;
+				protected int space;
+				protected int price;
+				protected boolean canBuy;
+				protected boolean purchased;
+				
+				public abstract String getName();
+
+				public int getSpace()
+					{
+						return space;
+					}
+
+				public void setSpace(int space)
+					{
+						this.space = space;
+					}
+
+				public int getPrice()
+					{
+						return price;
+					}
+
+				public void setPrice(int price)
+					{
+						this.price = price;
+					}
+
+				public boolean isCanBuy()
+					{
+						return canBuy;
+					}
+
+				public void setCanBuy(boolean canBuy)
+					{
+						this.canBuy = canBuy;
+					}
+
+				public boolean isPurchased()
+					{
+						return purchased;
+					}
+
+				public void setPurchased(boolean purchased)
+					{
+						this.purchased = purchased;
+					}
+
+				public void setName(String name)
+					{
+						this.name = name;
+					}
+				
+				
 	}
