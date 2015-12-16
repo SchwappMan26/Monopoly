@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Play
 	{
+		static int Jail=0;
 		static ArrayList<String>ownedProp = new ArrayList<String>();
 		static Scanner Player=new Scanner(System.in);
 		public static boolean gameContinues=true;
@@ -86,6 +87,12 @@ public class Play
 															System.out.println("You do not have enough money to pay for Blockade");
 														}
 												}
+											else if(position==11)
+												{
+															System.out.println("You Have Landed on Jail, you will now go reverse");
+															System.out.println("because you are going in the wrong direction in life.");
+															
+												}
 									}
 							}			
 					}
@@ -106,6 +113,15 @@ public class Play
 								dice1 = (int)(Math.random()*6 + 1);
 								dice2 = (int)(Math.random()*6 + 1);
 								roll = dice1 + dice2;
+								if(Jail%2==0)
+									{
+										position=position+roll;
+									}
+								else 
+									{
+										position=position-roll;
+									}
+								
 								if((position + roll) >= 40)
 									{
 									Money += 200;
@@ -170,7 +186,12 @@ public class Play
 														{
 															System.out.println("You do not have enough money to pay for Luxary Tax");
 														}
-											}
+													
+												}
+											else if (position==11)
+												{
+													Jail++;
+												}
 									}
 							}			
 				}
