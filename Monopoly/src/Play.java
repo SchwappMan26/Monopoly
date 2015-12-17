@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Play
 	{
-		static int Jail=0;
+		
 		static ArrayList<String>ownedProp = new ArrayList<String>();
 		static Scanner Player=new Scanner(System.in);
 		public static boolean gameContinues=true;
@@ -13,6 +13,7 @@ public class Play
 				int roll;
 				int position = 0;
 				int Credits=1500;
+				boolean wrongWay=false;
 				while(true) 
 					{
 						System.out.println("\nHit Enter to Roll Dice");
@@ -22,13 +23,41 @@ public class Play
 								dice1 = (int)(Math.random()*6 + 1);
 								dice2 = (int)(Math.random()*6 + 1);
 								roll = dice1 + dice2;
-								if((position + roll) >= 40) 
+								if((position + roll)>=40)
 									{
-										Credits += 200;
-										System.out.println("You received $200 for passing/landing on go");
-										System.out.println("Your balance is " + Credits+"Credits");
+										if(wrongWay==false) 
+											{
+												Credits+=200;
+												System.out.println("You received $200 for passing/landing on go");
+												System.out.println("Your balance is $" + Credits);
+											}
 									}
-									position = (position + roll)%40;
+								if(wrongWay == false) 
+									{
+										position = (position+roll)%40;
+										if(position==10) 
+											{
+												wrongWay=true;
+												System.out.println("You Have Landed on Jail, you will now go reverse");
+												System.out.println("because you are going in the wrong direction in life.");
+												System.out.println();
+											}
+									} 
+								else 
+									{
+										if((position - roll) < 0) 
+											{
+												position =position-roll+40;
+											}
+										else
+											{
+												position=position-roll;
+											}
+										if(position==10) 
+											{
+												wrongWay=false;
+											}
+									}
 									System.out.println("You rolled " + roll + "\tYou landed on " + Board.SpacesLoad.get(position).getName());
 									System.out.println();
 									if(Board.SpacesLoad.get(position).isCanBuy() == true)
@@ -87,12 +116,6 @@ public class Play
 															System.out.println("You do not have enough money to pay for Blockade");
 														}
 												}
-											else if(position==11)
-												{
-															System.out.println("You Have Landed on Jail, you will now go reverse");
-															System.out.println("because you are going in the wrong direction in life.");
-															
-												}
 									}
 							}			
 					}
@@ -104,6 +127,7 @@ public class Play
 				int roll;
 				int position = 0;
 				int Money=1500; 
+				boolean wrongWay=false;
 				while(true) 
 					{
 						System.out.println("\nHit Enter to Roll Dice");
@@ -113,22 +137,41 @@ public class Play
 								dice1 = (int)(Math.random()*6 + 1);
 								dice2 = (int)(Math.random()*6 + 1);
 								roll = dice1 + dice2;
-								if(Jail%2==0)
+								if((position + roll)>=40)
 									{
-										position=position+roll;
+										if(wrongWay==false) 
+											{
+												Money+=200;
+												System.out.println("You received $200 for passing/landing on go");
+												System.out.println("Your balance is $" + Money);
+											}
 									}
+								if(wrongWay == false) 
+									{
+										position = (position+roll)%40;
+										if(position==10) 
+											{
+												wrongWay=true;
+												System.out.println("You Have Landed on Jail, you will now go reverse");
+												System.out.println("because you are going in the wrong direction in life.");
+												System.out.println();
+											}
+									} 
 								else 
 									{
-										position=position-roll;
+										if((position - roll) < 0) 
+											{
+												position =position-roll+40;
+											}
+										else
+											{
+												position=position-roll;
+											}
+										if(position==10) 
+											{
+												wrongWay=false;
+											}
 									}
-								
-								if((position + roll) >= 40)
-									{
-									Money += 200;
-									System.out.println("You received $200 for passing/landing on go");
-									System.out.println("Your balance is " + Money);
-									}
-									position = (position + roll)%40;
 									System.out.println("You rolled " + roll + "\tYou landed on " + Board.SpacesLoad.get(position).getName());
 									System.out.println();
 									if(Board.SpacesLoad.get(position).isCanBuy() == true)
@@ -186,14 +229,9 @@ public class Play
 														{
 															System.out.println("You do not have enough money to pay for Luxary Tax");
 														}
-													
-												}
-											else if (position==11)
-												{
-													Jail++;
 												}
 									}
 							}			
-				}
+					}
 			}
 	}
